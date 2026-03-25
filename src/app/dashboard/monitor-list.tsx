@@ -167,7 +167,7 @@ export function MonitorList({
                         boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
                       }}
                       itemStyle={{ color: "#e6edf3" }}
-                      formatter={(v: number) => [`${v}ms`, "Latency"]}
+                      formatter={(v: any) => [`${v}ms`, "Latency"]}
                       labelFormatter={() => ""}
                     />
                     <Area

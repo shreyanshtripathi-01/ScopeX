@@ -24,7 +24,7 @@ export default async function SettingsPage() {
           <p className="text-xs text-muted mt-1">Update your personal details.</p>
         </div>
         
-        <form action={updateProfile} className="p-5 space-y-4">
+        <form action={async (formData) => { "use server"; await updateProfile(formData); }} className="p-5 space-y-4">
           <div>
             <label className="block text-sm font-medium text-foreground mb-1.5">Email</label>
             <input 

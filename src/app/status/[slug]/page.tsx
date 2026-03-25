@@ -1,12 +1,6 @@
 import { createClient } from "@/utils/supabase/server";
 import { notFound } from "next/navigation";
-import {
-  AreaChart,
-  Area,
-  ResponsiveContainer,
-  Tooltip,
-  YAxis,
-} from "recharts";
+import { StatusChart } from "@/components/StatusChart";
 
 export const revalidate = 0;
 
@@ -168,42 +162,7 @@ export default async function PublicStatusPage({
                 {/* Mini chart */}
                 {monitor.chartPings && monitor.chartPings.length > 1 ? (
                   <div className="h-16 mt-4 w-full">
-                    {/* @ts-ignore - Recharts server components workaround */}
-                    <ResponsiveContainer width="100%" height="100%">
-                      <AreaChart data={monitor.chartPings}>
-                        <defs>
-                          <linearGradient
-                            id={`g-${monitor.id}`}
-                            x1="0"
-                            y1="0"
-                            x2="0"
-                            y2="1"
-                          >
-                            <stop
-                              offset="0%"
-                              stopColor={monitor.isUp ? "#3fb950" : "#f85149"}
-                              stopOpacity={0.2}
-                            />
-                            <stop
-                              offset="100%"
-                              stopColor={monitor.isUp ? "#3fb950" : "#f85149"}
-                              stopOpacity={0}
-                            />
-                          </linearGradient>
-                        </defs>
-                        <YAxis domain={["auto", "auto"]} hide />
-                        <Area
-                          type="monotone"
-                          dataKey="latency_ms"
-                          stroke={monitor.isUp ? "#3fb950" : "#f85149"}
-                          strokeWidth={1.5}
-                          fillOpacity={1}
-                          fill={`url(#g-${monitor.id})`}
-                          isAnimationActive={false}
-                          dot={false}
-                        />
-                      </AreaChart>
-                    </ResponsiveContainer>
+                    <StatusChart monitor={monitor} />
                   </div>
                 ) : (
                   <div className="h-16 mt-4 flex items-center justify-center border border-dashed border-border rounded text-xs text-muted">

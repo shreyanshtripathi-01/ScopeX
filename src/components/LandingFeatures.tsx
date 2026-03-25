@@ -63,7 +63,7 @@ export function LandingFeatures() {
       </div>
 
       <motion.div
-        variants={container}
+        variants={container as any}
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, margin: "-100px" }}
@@ -72,7 +72,7 @@ export function LandingFeatures() {
         {FEATURES.map((f) => (
           <motion.div
             key={f.n}
-            variants={item}
+            variants={item as any}
             className="group border border-border rounded-2xl p-6 bg-card hover:bg-background transition-all duration-300 hover:shadow-2xl hover:shadow-primary/5 hover:-translate-y-1 relative overflow-hidden"
           >
             <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
